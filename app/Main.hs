@@ -30,7 +30,7 @@ parseGoCommand :: Parser Command
 parseGoCommand = CommandGo <$> labelParser
 
 labelParser :: Parser String
-labelParser = argument str (metavar "Label" <> help "The portal label")
+labelParser = argument str (metavar "LABEL" <> help "The portal label")
 
 
 parseCommand :: Parser Command
@@ -77,12 +77,14 @@ runAdd label = do
   file <- getFile
   portals <- getPortals
   encodeFile file $ addPortal label pwd portals 
+  putStrLn "Portal added"
 
 runRemove :: String -> IO ()
 runRemove label = do
   file <- getFile
   portals <- getPortals
   encodeFile file $ removePortal label portals 
+  putStrLn "Portal removed"
 
 runGo :: String -> IO ()
 runGo label = do
