@@ -62,7 +62,7 @@ parseCommand = subparser $
   ( command
     "go"
     ( info
-        (helper <*> parseListCommand)
+        (helper <*> parseGoCommand)
         (fullDesc <> progDesc "Go through the portal")
     )
   )
